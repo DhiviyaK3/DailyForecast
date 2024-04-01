@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App Admin Dashboard</title>
+    <style>
+        .admin-dashboard {
+            text-align: center;
+        }
+
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        main {
+            padding: 50px;
+            color: #4caf50;
+        }
+
+        .charts {
+            display: block; /* Changed from flex to block */
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .chart-container {
+            width: 300px;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .progress-bar {
+            position: relative;
+            width: 100%;
+            height: 30px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #f53c28;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #333;
+        }
+
+        .label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-dashboard">
+        <header>
+            <h1>Weather App Admin Dashboard</h1>
+        </header>
+        <main>
+            <h2>Weather Overview</h2>
+            <div class="charts">
+                <div class="chart-container">
+                    <div class="progress-bar" id="temperatureChart"></div>
+                    <p class="label">Temperature</p>
+                </div>
+                <div class="chart-container">
+                    <div class="progress-bar" id="precipitationChart"></div>
+                    <p class="label">Precipitation</p>
+                </div>
+                <div class="chart-container">
+                    <div class="progress-bar" id="humidityChart"></div>
+                    <p class="label">Humidity</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 Weather App</p>
+        </footer>
+    </div>
+
+    <script>
+        window.onload = function() {
+            createProgressBar('temperatureChart', 70);
+            createProgressBar('precipitationChart', 40);
+            createProgressBar('humidityChart', 50);
+        };
+
+        function createProgressBar(containerId, percentage) {
+            const container = document.getElementById(containerId);
+            container.classList.add('progress-bar');
+
+            const fill = document.createElement('div');
+            fill.classList.add('progress-fill');
+            fill.style.width = ${percentage}%;
+
+            const percentageText = document.createElement('div');
+            percentageText.classList.add('percentage');
+            percentageText.textContent = ${percentage}%;
+
+            container.appendChild(fill);
+            container.appendChild(percentageText);
+        }
+    </script>
+</body>
+</html>
